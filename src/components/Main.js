@@ -1,7 +1,9 @@
 const Main = () => {
   return(
     <main>
-     main
+     <div>one</div>
+     <div>two</div>
+     <div>three</div>
     </main>
   )
 }
