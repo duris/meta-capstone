@@ -1,9 +1,13 @@
+import Hero from "./Hero"
+import Specials from "./Specials"
+import Testimonials from "./Testimonials"
+
 const Main = () => {
   return(
     <main>
-     <div>one</div>
-     <div>two</div>
-     <div>three</div>
+    <Hero/>
+    <Specials/>
+    <Testimonials/>
     </main>
   )
 }
