@@ -1,3 +1,4 @@
+import stars from '../icons/stars.svg'
 
 const Testimonials = () => {
   return(
@@ -5,29 +6,30 @@ const Testimonials = () => {
       <div className="inner-wrapper">
       <h1>Testimonials</h1>
       <div className="reviews">
-        <div>
-          <div className="rating">rating</div>
-          <div className="person">img</div>
+        <div>          
+          <img src={stars} className="rating"/>
+          <img  className="person"/>
+          <h2>Person</h2>
+          <p>Review area</p>
+        </div>
+        <div>          
+          <img src={stars} className="rating"/>
+          <img className="person"/>
           <h2>Person</h2>
           <p>Review area</p>
         </div>
         <div>
-          <div className="rating">rating</div>
-          <div className="person">img</div>
+      
+          <img src={stars} className="rating"/>
+          <img className="person"/>
           <h2>Person</h2>
           <p>Review area</p>
         </div>
         <div>
-          <div className="rating">rating</div>
-          <div className="person">img</div>
+          <img src={stars}className="rating"/>
+          <img className="person"/>
           <h2>Person</h2>
-          <p>Review area</p>
-        </div>
-        <div>
-          <div className="rating">rating</div>
-          <div className="person">img</div>
-          <h2>Person</h2>
-          <p>Review area</p>
+          <p>You have to try the Greek Salad!</p>
         </div>
       </div>
       </div>

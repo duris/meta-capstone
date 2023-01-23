@@ -50,13 +50,13 @@ header .inner-wrapper{
   align-items: center;
   padding: 0 6em;
 }
-.hero h1 {
+.hero h1, .chicago h1 {
   color:#F4CE14;
   font-family: 'Markazi Text', serif;
   font-size: 58px;
   margin: 0;
 }
-.hero h2 {
+.hero h2, .chicago h2{
   color:white;
   font-family: 'Markazi Text', serif;
   margin: 0;
@@ -64,6 +64,13 @@ header .inner-wrapper{
   position: relative;
   top:-.5em;
   text-align: left;
+}
+
+.chicago{
+  padding: 4em 8em;
+}
+.chicago h1, .chicago h2{
+  color:black;
 }
 .hero div:first-child{
   text-align: left;
@@ -101,7 +108,7 @@ header .inner-wrapper{
   font-family: 'Markazi Text', serif;
 }
 
-.specials, .testimonials{
+.specials, .testimonials, .chicago{
   padding: 8em 8em;
   position: relative;
   display: flex;
@@ -134,11 +141,76 @@ header .inner-wrapper{
 }
 .testimonials{
   background: #D9D9D9;
-  padding: 0 2em 2em;
+  padding-top: 2em;
 }
 .reviews{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap:1em;
+}
+.reviews > div{
+  background: white;
+}
+.reviews h2, p{
+  /* float: right; */
+}
+.reviews h2{
+ margin-top: 1em; 
+}
+.reviews > div div{
+  background-color: gray;
+}
+.reviews > div .rating{
+  width: 200px;
+  height: 100px;
+  margin: -20px;
+}
+.reviews > div .person{
+  float: left;
+  background: beige;
+  margin: 1em;
+  width: 100px;
+  height: 100px;
+}
+.chicago .inner-wrapper{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.chicago{
+  display: flex;
+  justify-content: center;
+}
+.chicago h1, .chicago h2, .chicago p{
+  text-align: left;
+}
+.chicago p{
+  max-width: 300px;
+}
+.chicago .inner-wrapper{
+  padding: 4em 0 4em;
+}
+.chicago img{
+  float: right;
+  display: block;
+  position: absolute;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 2px 2px 8px gray;
+  height: 280px;
+  width: 250px;
+  right:2em;
+  top:50%;
+  transform: translate(-50%, -25%);
+}
+/* .chicago .inner-wrapper div:first-child{  
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;  
+} */
+.chicago img:last-child{
+  right: -4em;
+  top: -2em;
 }
 footer{
   display: flex;
@@ -152,6 +224,19 @@ nav.mobile{
 
 
 @media only screen and (max-width: 800px){
+  .chicago .inner-wrapper{
+    grid-template-columns: 1fr;
+  }
+  .chicago .inner-wrapper div:last-child{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+  }
+  .chicago img, .chicago img:last-child{
+    position: relative;
+    display: flex;
+  }
   .hero{
     padding: 2em;
     margin-bottom: 1em;
@@ -163,7 +248,7 @@ nav.mobile{
     height: 300px;
   }
   .hero .inner-wrapper{
-    flex-direction: column;        
+    flex-direction: column;
   }
   .specials{
     padding: 2em;
@@ -180,7 +265,6 @@ nav.mobile{
   }
   .burger img{
     cursor: pointer;
-   
   }
   nav.mobile {
     display: flex;
