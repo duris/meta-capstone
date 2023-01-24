@@ -48,7 +48,7 @@ header .inner-wrapper{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 6em;
+  position: relative;
 }
 .hero h1, .chicago h1 {
   color:#F4CE14;
@@ -102,6 +102,9 @@ header .inner-wrapper{
 .hero button:hover{
   background: #f8d735;
 }
+.hero img{
+  object-fit: cover;
+}
 .specials h1, .testimonials h1{
   text-align: left;
   font-size: 58px;
@@ -133,8 +136,24 @@ header .inner-wrapper{
   gap:1em;
 }
 .feature div{
-  background-color: #EDEFEE;
+  background-color: #EDEFEE;  
+}
+.feature p {
   padding: 1em;
+}
+.feature img{
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+.feature span {
+  float: right;
+  margin-top: -3.5em;
+  padding: .5em 1em;
+  color:#EE9972;
+  font-weight: bold;
+  font-size: 16px;
+  font-family: 'Karla', sans-serif;
 }
 .testimonials h1{
   text-align: center;
@@ -267,11 +286,10 @@ nav.mobile{
     cursor: pointer;
   }
   nav.mobile {
-    display: flex;
-    width: 100%;
-    text-align: right;
-    float: right;
-    margin-left: 6em;
+    display: block;
+    position: absolute;
+    right: 0em;
+    top: 2.5em;
   }
 
   nav.not-mobile{

@@ -1,4 +1,5 @@
 import stars from '../icons/stars.svg'
+import person from '../images/person.png'
 
 const Testimonials = () => {
   return(
@@ -8,26 +9,26 @@ const Testimonials = () => {
       <div className="reviews">
         <div>          
           <img src={stars} className="rating"/>
-          <img  className="person"/>
+          <img src={person} alt='person' className="person"/>
           <h2>Person</h2>
-          <p>Review area</p>
+          <p>The greek salad was excellent!</p>
         </div>
         <div>          
           <img src={stars} className="rating"/>
-          <img className="person"/>
+          <img src={person} alt='person' className="person"/>
           <h2>Person</h2>
-          <p>Review area</p>
+          <p>Really enjoyed the atmosphere.</p>
         </div>
         <div>
       
           <img src={stars} className="rating"/>
-          <img className="person"/>
+          <img src={person} alt='person' className="person"/>
           <h2>Person</h2>
           <p>Review area</p>
         </div>
         <div>
           <img src={stars}className="rating"/>
-          <img className="person"/>
+          <img src={person} alt='person' className="person"/>
           <h2>Person</h2>
           <p>You have to try the Greek Salad!</p>
         </div>

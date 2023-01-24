@@ -1,3 +1,4 @@
+import food from '../images/food1.jpg'
 
 const Hero = () => {
   return(
@@ -10,7 +11,7 @@ const Hero = () => {
           <button>Reserve a Table</button>
         </div>
         <div>
-          <img src='#' alt="food plate"></img>
+          <img src={food} alt="food plate"></img>
         </div>
       </div>
     </section>
