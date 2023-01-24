@@ -219,7 +219,8 @@ header .inner-wrapper{
   width: 250px;
   right:2em;
   top:50%;
-  transform: translate(-50%, -25%);
+  object-fit: cover;
+  transform: translate(-50%, -15%);
 }
 /* .chicago .inner-wrapper div:first-child{  
   display: flex;

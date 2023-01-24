@@ -1,3 +1,5 @@
+import restaurant from '../images/restaurant.jpg'
+import chef from '../images/restaurant-chef-b.jpg'
 
 const Chicago = () => {
   return(
@@ -9,8 +11,8 @@ const Chicago = () => {
           <p>We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.</p>
         </div>
         <div>
-          <img src='#' alt="chefs image"></img>
-          <img src='#' alt="resturant image"></img>
+        <img src={restaurant} alt="resturant image"></img>
+          <img src={chef} alt="chefs image"></img>
         </div>
       </div>
     </section>
