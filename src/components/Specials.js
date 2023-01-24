@@ -2,12 +2,15 @@ import bruchetta from '../images/bruchetta.svg'
 import salad from '../images/greek-salad.jpg'
 import dessert from '../images/lemon-dessert.jpg'
 
+import { Outlet, Link } from "react-router-dom";
+
 const Specials = () => {
   return(
     <section className="specials">
       <div className="inner-wrapper">
       <h1>Specials</h1>
-      <button>Online Menu</button>
+      <Link className='menuButton' to="/menu">Online Menu</Link>
+
       <div className="feature">
           <div>
             <img src={salad} alt="greek salad" />

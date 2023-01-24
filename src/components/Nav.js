@@ -12,7 +12,7 @@ const Nav = () => {
   return(
     <>
 
-        <nav class='mobile'>
+        <nav className='mobile'>
           <div className='burger'>
             <img src={hamburger} width={80} height={20} />
           </div>
@@ -25,7 +25,7 @@ const Nav = () => {
             <li><a href="#">Login</a></li> */}
           </ul>
         </nav>
-        <nav class='not-mobile'>
+        <nav className='not-mobile'>
           <ul>
             <li><Link to="/">Home</Link></li>
             <li><Link to="/about">About</Link></li>

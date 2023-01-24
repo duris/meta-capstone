@@ -28,6 +28,7 @@ nav a {
 }
 main{
   text-align: center;
+  min-height: 73vh;
 }
 .hero{
   background:#495E57;
@@ -83,6 +84,7 @@ header .inner-wrapper{
 .hero p {
   color:white;
   width: 70%;
+  padding: 0 0 2em;
 }
 .hero img{
   background: rgb(49, 49, 49);
@@ -92,14 +94,17 @@ header .inner-wrapper{
   border-radius: 10px;
   margin-bottom: -100px;
 }
-.hero button{
+.hero .reserve{
   background: #F4CE14;
   border:none;
   padding: 1em 2em;
   border-radius: 5px;
   cursor: pointer;
+  /* font-size: 14px; */
+  text-decoration: none;
+  color:black;
 }
-.hero button:hover{
+.hero .reserve:hover{
   background: #f8d735;
 }
 .hero img{
@@ -119,7 +124,7 @@ header .inner-wrapper{
   justify-content: space-evenly;
 }
 
-.specials button{
+.specials .menuButton{
   background-color: black;
   color:white;
   border:none;
@@ -129,6 +134,7 @@ header .inner-wrapper{
   right: 0;
   top:4em;
   cursor: pointer;
+  text-decoration: none;
 }
 .feature{
   display: grid;
@@ -245,8 +251,60 @@ nav.mobile{
   display: none;
 }
 
+footer{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  justify-content: center;
+  /* align-items: center; */
+}
+
+footer nav a{
+  padding: 0;
+}
+footer h2{
+  font-size: 20px;
+  text-align: left;
+}
+
+footer nav ul {
+  padding: 0;
+  display: block;
+  text-align: left;
+}
+
+
+.booking-wrapper{
+  padding: 2em;
+  display: flex;
+  justify-content: center;
+}
+.booking input:last-child{
+  cursor: pointer;
+  padding: 1.5em 2em;
+  background: black;
+  color:white;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+}
+
+.booking{
+  display: grid;
+  max-width: 300px;
+  gap:20px; 
+}
+.booking input{
+  width: 100%;
+  padding: 1em;
+  border-radius: 4px;
+  box-shadow: none;
+  /* border:none; */
+}
 
 @media only screen and (max-width: 800px){
+  footer{
+    grid-template-columns: 1fr;
+  }
   header{
     padding: 0 2em;
   }
