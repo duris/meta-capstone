@@ -8,11 +8,11 @@ body{
 }
 header{
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   flex-direction: row;
   background: white;
-  padding:1em 2em;
+  padding: 0 8em;
 }
 nav ul{
   display: flex;
@@ -139,7 +139,7 @@ header .inner-wrapper{
   background-color: #EDEFEE;  
 }
 .feature p {
-  padding: 1em;
+  padding: 0 1em 1em;
 }
 .feature img{
   width: 100%;
@@ -147,13 +147,16 @@ header .inner-wrapper{
   object-fit: cover;
 }
 .feature span {
-  float: right;
-  margin-top: -3.5em;
-  padding: .5em 1em;
   color:#EE9972;
   font-weight: bold;
   font-size: 16px;
   font-family: 'Karla', sans-serif;
+}
+.feature .details{
+  padding: 1em 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
 }
 .testimonials h1{
   text-align: center;
@@ -244,6 +247,9 @@ nav.mobile{
 
 
 @media only screen and (max-width: 800px){
+  header{
+    padding: 0 2em;
+  }
   .chicago .inner-wrapper{
     grid-template-columns: 1fr;
   }

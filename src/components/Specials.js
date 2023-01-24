@@ -11,20 +11,26 @@ const Specials = () => {
       <div className="feature">
           <div>
             <img src={salad} alt="greek salad" />
-            <h2>Greek Salad</h2>
-            <span>$12.99</span>
+            <div className='details'>
+              <h2>Greek Salad</h2>
+              <span>$12.99</span>
+            </div>
             <p>The famous greek salad of crispy lettuce, peppers, olives and our Chicago style feta cheese, garnished with crunchy garlic and rosemary croutons. </p>
           </div>
           <div>
             <img src={bruchetta} alt="bruchetta" />
-            <h2>Bruchetta</h2>
-            <span>$5.99</span>
+            <div className='details'>
+              <h2>Bruchetta</h2>
+              <span>$5.99</span>
+            </div>
             <p>The famous greek salad of crispy lettuce, peppers, olives and our Chicago style feta cheese, garnished with crunchy garlic and rosemary croutons. </p>
           </div>
           <div>
             <img src={dessert} alt="lemon dessert" />
-            <h2>Lemon Dessert</h2>
-            <span>$5.00</span>
+            <div className='details'>
+              <h2>Lemon Dessert</h2>
+              <span>$5.00</span>
+            </div>
             <p>The famous greek salad of crispy lettuce, peppers, olives and our Chicago style feta cheese, garnished with crunchy garlic and rosemary croutons. </p>
           </div>
       </div>

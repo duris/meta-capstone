@@ -1,15 +1,28 @@
 import logo from './logo.svg';
 import './App.css';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Main from './components/Main';
+import Homepage from './components/Homepage';
+import BookingPage from './components/BookingPage';
+import Menu from './components/Menu';
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import OrderPage from './components/OrderPage';
+import LoginPage from './components/LoginPage';
+import AboutPage from './components/AboutPage';
 
 function App() {
   return (
     <>
-    <Header/>
-    <Main/>
-    <Footer/>
+   <BrowserRouter>
+      <Routes>
+          <Route path="/" element={<Homepage />}/>
+          <Route index element={<Homepage />} />
+          <Route path="reservations" element={<BookingPage />} />
+          <Route path="menu" element={<Menu />} />
+          <Route path="order" element={<OrderPage />} />
+          <Route path="login" element={<LoginPage />} />
+          <Route path="about" element={<AboutPage />} />
+      </Routes>
+    </BrowserRouter>
     </>
   );
 }
