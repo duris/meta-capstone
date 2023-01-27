@@ -1,32 +1,32 @@
 import Header from "./Header"
 import Footer from "./Footer"
 import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 
-const BookingForm = () => {
+const BookingForm = ({bookingData, setBookingData}) => {
 
-  const [date, setDate] = useState('01/24/2023')
-  const [time, setTime] = useState('17:00')
-  const [numberOfGuests, setNumberOfGuests] = useState(1)
-  const [occasion, setOccasion] = useState('Birthday')
 
-  useEffect(() => {
-    console.log(date)
-    console.log(time)
-    console.log(numberOfGuests)
-    console.log(occasion)
-  }, [date, time, numberOfGuests, occasion])
+  const navigate = useNavigate()
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    navigate('/')
   }
+
 
   return(
     <div className="booking-wrapper">
+      {!bookingData.date?<div>no date</div>:<div>{bookingData.date}</div>}
       <form className="booking" onSubmit={handleSubmit}>
         <label htmlFor="res-date">Choose date</label>
-        <input id="res-date" onChange={(e) => setDate(e.target.value)} type="date"/>
+        <input id="res-date" value={bookingData.date} onChange={(e) => {
+          setBookingData(prevState => {return {...prevState, date:e.target.value}})
+          }} type="date"/>
         <label htmlFor="res-time">Choose time</label>
-        <select id="res-time" onChange={(e) => setTime(e.target.value)} >
+        <select id="res-time" value={bookingData.time} onChange={(e) => {
+          setBookingData(prevState => {return {...prevState, time:e.target.value}})
+          }} >
           <option>17:00</option>
           <option>18:00</option>
           <option>19:00</option>
@@ -35,9 +35,13 @@ const BookingForm = () => {
           <option>22:00</option>
         </select>
         <label htmlFor="guests">Number of guests</label>
-        <input type="number" placeholder="1" min="1" max="10" id="guests" onChange={(e) => setNumberOfGuests(e.target.value)} />
+        <input type="number" min="1" max="10" id="guests" value={bookingData.guests} onChange={(e) => {
+          setBookingData(prevState => {return {...prevState, guests:e.target.value}})
+          }} />
         <label htmlFor="occasion">Occasion</label>
-        <select id="occasion" onChange={(e) => setOccasion(e.target.value)} >
+        <select id="occasion" value={bookingData.occasion} onChange={(e) => {
+          setBookingData(prevState => {return {...prevState, occasion:e.target.value}})
+          }} >
           <option>Birthday</option>
           <option>Anniversary</option>
         </select>

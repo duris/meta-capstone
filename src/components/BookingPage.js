@@ -2,12 +2,12 @@ import Header from "./Header"
 import Footer from "./Footer"
 import BookingForm from "./BookingForm"
 
-const BookingPage = () => {
+const BookingPage = ({bookingData, setBookingData}) => {
   return(
     <>
     <Header/>
     <main>
-     <BookingForm/>
+     <BookingForm bookingData={bookingData} setBookingData={setBookingData} />
      </main>
     <Footer/>
     </>

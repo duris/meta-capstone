@@ -1,7 +1,9 @@
 import Header from "./Header"
 import Footer from "./Footer"
 import Main from "./Main"
-const Homepage = () => {
+const Homepage = ({bookingData}) => {
+
+  console.log(bookingData)
   return(
     <>
     <Header/>
@@ -12,3 +14,4 @@ const Homepage = () => {
 }
 
 export default Homepage
+
