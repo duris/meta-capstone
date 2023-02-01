@@ -5,7 +5,7 @@ const Hero = () => {
     <section className="hero">
       <div className="inner-wrapper">
         <div>
-          <h1>Hero Section</h1>
+          <h1>Little Lemon</h1>
           <h2>Chicago</h2>
           <p>We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.</p>
           <Link className='reserve' to="/reservations">Reserve a Table</Link>

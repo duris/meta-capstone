@@ -2,25 +2,36 @@ import Header from "./Header"
 import Footer from "./Footer"
 import { useEffect, useState } from "react"
 import { Router, useNavigate } from "react-router-dom"
+import {fetchAPI, seededRandom, submitAPI} from '../metaApi'
 
 
-
-const BookingForm = ({bookingData, setBookingData, availableTimes, setAvailableTimes}) => {
+const BookingForm = ({bookingData, setBookingData, availableTimes, setAvailableTimes, submitForm}) => {
 
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const  handleSubmit = async (e) => {
     e.preventDefault();
 
-    navigate('/')
+
+
+  if(submitForm() === true)
+  {
+    console.log('success')
+    navigate('/confirmation')
+  }else {
+    alert('Error')
+  }
+
   }
 
 
   const AvailableTimes = () => {
-    return(availableTimes.map(time => {
+
+    return(availableTimes.times.map(time => {
       return(<option key={time}>{time}</option>)
       }))
   }
+
 
 
   return(
@@ -30,6 +41,7 @@ const BookingForm = ({bookingData, setBookingData, availableTimes, setAvailableT
         <form className="booking" onSubmit={handleSubmit}>
           <label htmlFor="res-date">Choose date</label>
           <input id="res-date" value={bookingData.date} onChange={(e) => {
+            setAvailableTimes({type: 'update_times'})
             setBookingData(prevState => {return {...prevState, date:e.target.value}})
             }} type="date"/>
           <label htmlFor="res-time">Choose time</label>
@@ -49,7 +61,7 @@ const BookingForm = ({bookingData, setBookingData, availableTimes, setAvailableT
             <option>Birthday</option>
             <option>Anniversary</option>
           </select>
-          <input type="submit" value="Make Your reservation"/>
+          <input id="submitButton" type="submit" value="Make Your reservation"/>
         </form>
       </div>
     </>

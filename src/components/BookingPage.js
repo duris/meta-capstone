@@ -2,7 +2,7 @@ import Header from "./Header"
 import Footer from "./Footer"
 import BookingForm from "./BookingForm"
 
-const BookingPage = ({bookingData, setBookingData, availableTimes, setAvailableTimes}) => {
+const BookingPage = ({bookingData, setBookingData, availableTimes, setAvailableTimes, submitForm}) => {
   return(
     <>
     <Header/>
@@ -12,6 +12,7 @@ const BookingPage = ({bookingData, setBookingData, availableTimes, setAvailableT
       setBookingData={setBookingData}
       availableTimes={availableTimes}
       setAvailableTimes={setAvailableTimes}
+      submitForm={submitForm}
      />
      </main>
     <Footer/>

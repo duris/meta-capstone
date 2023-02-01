@@ -161,8 +161,9 @@ header .inner-wrapper{
 .feature .details{
   padding: 1em 0;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 6fr 1fr;
   align-items: center;
+  text-align: center;
 }
 .testimonials h1{
   text-align: center;
