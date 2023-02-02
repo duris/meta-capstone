@@ -44,35 +44,24 @@ function App() {
     }
   }
 
+  function initializeTimes() {
+    setAvailableTimes({type: 'init'})
+  }
+
+  
+
 
   function updateTimes(state, action) {
     if (action.type === 'init') {
-      return {times: ['18:00', '19:30', '19:50', '20:00', '21:00', '22:00']}
+      return {times: fetchAPI(today)}
     }
     if (action.type === 'update_times') {
       let selectedBookingDate = new Date(bookingData.date)
-      console.log('fetching data for', selectedBookingDate)
-      let newTimes = fetchAPI(selectedBookingDate)
-      console.log(newTimes)
+      let newTimes = fetchAPI(selectedBookingDate).filter(time => time != '17:00')
       return {times: newTimes}
     }
     throw Error('Unknown action.');
   }
-
-  // function reducer(state, action) {
-  //   let newState;
-  //   switch (action.type) {
-  //     case 'update':
-  //       newState = { counter: state.counter + 1 };
-  //       break;
-  //     case 'descrease':
-  //       newState = { counter: state.counter - 1 };
-  //       break;
-  //     default:
-  //       throw new Error();
-  //   }
-  //   return newState;
-  // }
 
 
   return (

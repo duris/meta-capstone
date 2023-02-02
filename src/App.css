@@ -279,7 +279,7 @@ footer nav ul {
   display: flex;
   justify-content: center;
 }
-.booking input:last-child{
+.booking button{
   cursor: pointer;
   padding: 1.5em 2em;
   background: black;
@@ -287,6 +287,12 @@ footer nav ul {
   font-weight: bold;
   border: none;
   border-radius: 5px;
+}
+
+.booking button:disabled{
+  cursor: default;
+  padding: 1.5em 2em;
+  background: gray;
 }
 
 .booking{
@@ -300,6 +306,10 @@ footer nav ul {
   border-radius: 4px;
   box-shadow: none;
   /* border:none; */
+}
+
+.error{
+  color:rgb(154, 36, 36);
 }
 
 @media only screen and (max-width: 800px){

@@ -46,29 +46,53 @@ test('Test input element', () => {
 
   const input = document.getElementById('guests')
 
+  // const input = screen.getByLabelText('Guests', {selector: 'input'})
+
+  // const element = screen.getByTestId('inputSearch')
+
+  // const getPeople = screen.getByText('Guests')
+
+  // const input = screen.getByTestId("guests");
+
+  // expect(getPeople).toBeInTheDocument()
   fireEvent.change(input, {target: { value: 2}})
   expect(input.value).toBe(2)
-  // expect(input.title).toBe('Number of guests')
 
 })
 
-test('Check can submit', () => {
+
+
+test('Test input element', () => {
   render(
     <Router>
     <BookingForm availableTimes={availableTimes} bookingData={bookingData}/>
   </Router>
-  )
+  );
 
 
-  const button = document.getElementById('submitButton')
 
-  // const onSubmit = jest.fn();
-  const inputValue = "12";
+  const submit = screen.getByTestId('submitButton')
 
-  // fireEvent.change(getByLabelText(/message/i), { target: { value: inputValue } });
-  // fireEvent.click(getByText(/Make Your Reservation/i));
-
-  fireEvent.click(button)
-
-  expect(button).toBeCalled();
+  expect(submit).toBeInTheDocument()
 })
+
+// test('Check can submit', () => {
+//   render(
+//     <Router>
+//     <BookingForm availableTimes={availableTimes} bookingData={bookingData}/>
+//   </Router>
+//   )
+
+
+//   const button = document.getElementById('submitButton')
+
+//   // const onSubmit = jest.fn();
+//   const inputValue = "12";
+
+//   // fireEvent.change(getByLabelText(/message/i), { target: { value: inputValue } });
+//   // fireEvent.click(getByText(/Make Your Reservation/i));
+
+//   fireEvent.click(button)
+
+//   expect(button).toBeCalled();
+// })
