@@ -3,10 +3,11 @@ import Footer from "./Footer"
 import { useEffect, useState } from "react"
 import { Router, useNavigate } from "react-router-dom"
 import {fetchAPI, seededRandom, submitAPI} from '../metaApi'
-import { Formik } from 'formik';
+
 
 
 const BookingForm = ({bookingData, setBookingData, availableTimes, setAvailableTimes, submitForm}) => {
+
 
   const [dateError, setDateError] = useState(null)
   const [timeError, setTimeError] = useState(null)
@@ -14,6 +15,9 @@ const BookingForm = ({bookingData, setBookingData, availableTimes, setAvailableT
   const [occasionError, setOccasionError] = useState(null)
   const [isTouched, setIsTouched] = useState(false);
   const [validated, setValidated] = useState(false)
+  
+
+  const [isLoading, setIsLoading] = useState(false);
 
 
   useEffect(() => {
@@ -22,6 +26,33 @@ const BookingForm = ({bookingData, setBookingData, availableTimes, setAvailableT
 
   const handleBlur = () => {
     validateForm()
+  }
+
+  const handleChange = (e) => {
+
+    console.log("should update errors")
+
+    switch (e.target.id) {
+      case 'res-date':
+        setAvailableTimes({type: 'update_times'})
+        setBookingData(prevState => {return {...prevState, date:e.target.value}})        
+        break;
+      case 'res-time':        
+        setBookingData(prevState => {return {...prevState, time:e.target.value}})        
+        break;    
+      case 'guests':        
+        setBookingData(prevState => {return {...prevState, guests:e.target.value}})        
+        break;    
+      case 'occasion':        
+        setBookingData(prevState => {return {...prevState, occasion:e.target.value}})        
+        break;    
+      default:
+        break;
+    }
+
+    setIsTouched(true)            
+    validateForm()
+    
   }
 
   function validateForm() {
@@ -52,7 +83,7 @@ const BookingForm = ({bookingData, setBookingData, availableTimes, setAvailableT
       setOccasionError(null)
     }
 
-    if(dateError === '' && timeError === '' && guestsError === '' && occasionError === '' && isTouched){
+    if(dateError === null && timeError === null  && guestsError === null && occasionError === null && isTouched){
       setValidated(true)
     } else {
       setValidated(false)
@@ -64,7 +95,6 @@ const BookingForm = ({bookingData, setBookingData, availableTimes, setAvailableT
 
   const  handleSubmit = async (e) => {
     e.preventDefault();
-
 
 
   if(submitForm() === true)
@@ -108,39 +138,25 @@ const BookingForm = ({bookingData, setBookingData, availableTimes, setAvailableT
       <div className="booking-wrapper">
         <form className="booking" onSubmit={handleSubmit}>
           <label htmlFor="res-date">Choose date</label>
-          <input id="res-date" value={bookingData.date} onBlur={handleBlur} onChange={(e) => {
-            setAvailableTimes({type: 'update_times'})
-            setBookingData(prevState => {return {...prevState, date:e.target.value}})
-            setIsTouched(true)
-            validateForm()
-            }} type="date"/>
+          <input data-testid="date" id="res-date" required value={bookingData.date} onBlur={handleBlur} onChange={handleChange} type="date"/>
             <span className="error">{dateError}</span>
           <label htmlFor="res-time">Choose time</label>
-          <select id="res-time" value={bookingData.time}onBlur={handleBlur} onChange={(e) => {
-            setBookingData(prevState => {return {...prevState, time:e.target.value}})
-            setIsTouched(true)
-            }} >
+          <select data-testid="time" id="res-time" required value={bookingData.time}onBlur={handleBlur} onChange={handleChange} >
             <option></option>
             <AvailableTimes />
           </select>
           <span className="error">{timeError}</span>
           <label htmlFor="guests">Guests</label>
-          <input data-testid="inputSearch" type="number" placeholder="1" min="1" max="10" id="guests" value={bookingData.guests} onBlur={handleBlur} onChange={(e) => {
-            setBookingData(prevState => {return {...prevState, guests:e.target.value}})
-            setIsTouched(true)
-            }} />
+          <input data-testid="guests" required type="number" placeholder="1" min="1" max="10" id="guests" value={bookingData.guests} onBlur={handleBlur} onChange={handleChange} />
             <span className="error">{guestsError}</span>
           <label htmlFor="occasion">Occasion</label>
-          <select id="occasion" value={bookingData.occasion} onBlur={handleBlur} onChange={(e) => {
-            setBookingData(prevState => {return {...prevState, occasion:e.target.value}})
-            setIsTouched(true)
-            }} >
+          <select data-testid="occasion" id="occasion" required value={bookingData.occasion} onBlur={handleBlur} onChange={handleChange} >
             <option></option>
             <option>Birthday</option>
             <option>Anniversary</option>
           </select>
           <span className="error">{occasionError}</span>
-          <button id="submitButton" disabled={!validated} type="submit">Make Your Reservation</button>
+          <button data-testid="submit" id="submitButton" required disabled={!validated} type="submit">{isLoading?'Loading...':'Make Your Reservation'}</button>
         </form>
       </div>
     </>

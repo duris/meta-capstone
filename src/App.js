@@ -1,18 +1,15 @@
-import logo from './logo.svg';
 import './App.css';
 import Homepage from './components/Homepage';
 import BookingPage from './components/BookingPage';
 import Menu from './components/Menu';
-import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import OrderPage from './components/OrderPage';
 import LoginPage from './components/LoginPage';
 import AboutPage from './components/AboutPage';
 import { useEffect, useReducer, useState } from 'react';
-import {fetchAPI, seededRandom, submitAPI} from './metaApi'
+import {fetchAPI, submitAPI} from './metaApi'
 import ConfirmedBooking from './components/ConfirmedBooking';
-import Header from './components/Header';
-import Footer from './components/Footer';
+
 
 function App() {
 
@@ -48,7 +45,7 @@ function App() {
     setAvailableTimes({type: 'init'})
   }
 
-  
+
 
 
   function updateTimes(state, action) {
@@ -65,24 +62,22 @@ function App() {
 
 
   return (
-    <>
-    <BrowserRouter>
-        <Routes>
-            <Route index element={<Homepage bookingData={bookingData} />} />
-            <Route path="reservations" element={<BookingPage
-              bookingData={bookingData}
-              setBookingData={setBookingData}
-              availableTimes={availableTimes}
-              setAvailableTimes={setAvailableTimes}
-              submitForm={submitForm} />} />
-            <Route path="menu" element={<Menu />} />
-            <Route path="order" element={<OrderPage />} />
-            <Route path="login" element={<LoginPage />} />
-            <Route path="about" element={<AboutPage />} />
-            <Route path="confirmation" element={<ConfirmedBooking bookingData={bookingData} />} />
-        </Routes>
-      </BrowserRouter>
-    </>
+        <BrowserRouter>
+            <Routes>
+                <Route index element={<Homepage bookingData={bookingData} />} />
+                <Route path="reservations" element={<BookingPage
+                  bookingData={bookingData}
+                  setBookingData={setBookingData}
+                  availableTimes={availableTimes}
+                  setAvailableTimes={setAvailableTimes}
+                  submitForm={submitForm} />} />
+                <Route path="menu" element={<Menu />} />
+                <Route path="order" element={<OrderPage />} />
+                <Route path="login" element={<LoginPage />} />
+                <Route path="about" element={<AboutPage />} />
+                <Route path="confirmation" element={<ConfirmedBooking bookingData={bookingData} />} />
+            </Routes>
+          </BrowserRouter>
   );
 }
 
