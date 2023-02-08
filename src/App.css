@@ -288,6 +288,15 @@ footer nav ul {
   border: none;
   border-radius: 5px;
 }
+.booking-wrapper form{
+  display: flex;
+  flex-direction: column;
+}
+
+.booking-wrapper input, .booking-wrapper select{
+  flex-basis: 100%;
+  width: 100%;
+}
 
 .booking button:disabled{
   cursor: default;
@@ -310,6 +319,11 @@ footer nav ul {
 
 .error{
   color:rgb(154, 36, 36);
+}
+
+.menuImg{
+  width: 100%;
+  height: auto;
 }
 
 @media only screen and (max-width: 800px){

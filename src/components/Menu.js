@@ -1,12 +1,13 @@
 import Header from "./Header"
 import Footer from "./Footer"
+import menu from "../images/menu.png"
 
 const Menu = () => {
   return(
     <>
     <Header/>
     <main>
-      menu component
+      <img src={menu} className="menuImg" />
     </main>
     <Footer/>
     </>

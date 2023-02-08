@@ -136,27 +136,72 @@ const BookingForm = ({bookingData, setBookingData, availableTimes, setAvailableT
     <>
     <h1>Book Now</h1>
       <div className="booking-wrapper">
-        <form className="booking" onSubmit={handleSubmit}>
+        <form 
+          data-testid="booking-form" 
+          className="booking" 
+          onSubmit={handleSubmit}
+          >
           <label htmlFor="res-date">Choose date</label>
-          <input data-testid="date" id="res-date" required value={bookingData.date} onBlur={handleBlur} onChange={handleChange} type="date"/>
+          <input 
+            data-testid="date" 
+            id="res-date" 
+            required value={bookingData.date} 
+            onBlur={handleBlur} 
+            onChange={handleChange} 
+            type="date"
+            />
             <span className="error">{dateError}</span>
           <label htmlFor="res-time">Choose time</label>
-          <select data-testid="time" id="res-time" required value={bookingData.time}onBlur={handleBlur} onChange={handleChange} >
+          <div data-testid="res-time">
+          <select 
+            data-testid="time"
+            id="res-time" 
+            required 
+            value={bookingData.time}
+            onBlur={handleBlur} 
+            onChange={handleChange} 
+            >
             <option></option>
             <AvailableTimes />
           </select>
+          </div>
           <span className="error">{timeError}</span>
           <label htmlFor="guests">Guests</label>
-          <input data-testid="guests" required type="number" placeholder="1" min="1" max="10" id="guests" value={bookingData.guests} onBlur={handleBlur} onChange={handleChange} />
-            <span className="error">{guestsError}</span>
+          <input 
+            data-testid="guests" 
+            required type="number" 
+            placeholder="1" 
+            min="1" 
+            max="10" 
+            id="guests" 
+            value={bookingData.guests} 
+            onBlur={handleBlur} 
+            onChange={handleChange} 
+            />
+            <span className="error">{guestsError}</span>          
+          <div data-testid="res-occasion">
           <label htmlFor="occasion">Occasion</label>
-          <select data-testid="occasion" id="occasion" required value={bookingData.occasion} onBlur={handleBlur} onChange={handleChange} >
+          <select 
+            data-testid="occasion" 
+            id="occasion" 
+            required value={bookingData.occasion} 
+            onBlur={handleBlur} 
+            onChange={handleChange} 
+            >
             <option></option>
             <option>Birthday</option>
             <option>Anniversary</option>
           </select>
+          </div>
           <span className="error">{occasionError}</span>
-          <button data-testid="submit" id="submitButton" required disabled={!validated} type="submit">{isLoading?'Loading...':'Make Your Reservation'}</button>
+          <button 
+            role="button" 
+            onclick="handleCommand(event)" 
+            data-testid="submit" id="submitButton" 
+            required disabled={!validated} 
+            type="submit"
+            >{isLoading?'Loading...':'Make Your Reservation'}
+          </button>
         </form>
       </div>
     </>

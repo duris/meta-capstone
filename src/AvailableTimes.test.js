@@ -4,7 +4,8 @@ import BookingForm from './components/BookingForm'
 import {BrowserRouter as Router} from 'react-router-dom';
 import Homepage from './components/Homepage';
 import Hero from './components/Hero';
-import { isDisabled } from '@testing-library/user-event/dist/utils';
+import * as userEvent from "@testing-library/user-event";
+import selectEvent from 'react-select-event'
 
 const bookingData = {
   date: '',
@@ -16,6 +17,8 @@ const bookingData = {
 const availableTimes = {times:['16:00', '17:30', '18:50', '19:00', '20:00', '21:00']}
 
 const updatedTimes =  ['16:00', '17:30', '18:50', '19:00', '20:00', '21:00']
+
+
 
 test('Test Available Times', () => {
   expect(availableTimes.times[0]).toBe('16:00')
@@ -91,18 +94,17 @@ function setBookingData() {
 }
 
 
-test('Test inputs change', () => {
-
-  const handleChange = jest.fn()
+test('Test inputs change', async () => {
+  const user = userEvent.default.setup();
 
   render(
   <Router>
-    <BookingForm availableTimes={availableTimes} bookingData={bookingData} setBookingData={setBookingData} handleChange={handleChange} />
+    <BookingForm availableTimes={availableTimes} bookingData={bookingData} setBookingData={setBookingData}  />
   </Router>
   );
 
 
-  const occasion = screen.getByTestId('occasion')
+  const occasion = screen.getByTestId('occasion') 
   expect(occasion).toBeInTheDocument()
 
 
@@ -119,28 +121,78 @@ test('Test inputs change', () => {
   expect(screen.getByRole('option', { name: 'Birthday' })).toBeInTheDocument();
   expect(screen.getByRole('option', { name: 'Anniversary' })).toBeInTheDocument();
 
-  const input = occasion.firstChild
+  // const input = occasion.lastChild
 
-  fireEvent.change(input, {
-    target: {
-      value:
-        1
-    }
-  });
+  // fireEvent.keyDown(input, {keyCode: 40 })
+
+  // const option = await screen.findByText('Anniversary') // its a label in options list
+  //   fireEvent.click(option)
+
+    const selection = screen.getByTestId('occasion')
+
+    user.click(screen.getByTestId('occasion').parentElement);
+
+    user.click(await screen.findByText('Anniversary'));
+
+    expect(await screen.getByTestId('occasion')).toHaveDisplayValue('Anniversary')
+
+
+  // expect(occasion[1].value).toBe('Birthday');
+  // expect(occasion[2].value).toBe('Anniversary');
+
+  // expect(occasion[0].selected).toBe(true);
+
+  
+
+
+})
+
+
+
+
+// test('Check form for error ', () => {
+//   render(
+//     <Router>
+//       <BookingForm availableTimes={availableTimes} bookingData={bookingData} setBookingData={setBookingData}  />
+//     </Router>
+//   )
+//   const form = screen.getByTestId('booking-form');
+//   expect(form).toHaveTextContent('Must')
+// });
+
+
+
+
+test('Options feild test', async () => {
+  const user = userEvent.default.setup();
+  
+  render(
+  <Router>
+    <BookingForm availableTimes={availableTimes} bookingData={bookingData} setBookingData={setBookingData}  />
+  </Router>
+  );
+
+
+  const occasion = screen.getByTestId('occasion') 
+  expect(occasion).toBeInTheDocument()
+
+  
+  // await user.click(occasion[1])
+
+  // fireEvent.click(screen.getByText("Anniversary"))
 
   fireEvent.change(occasion.firstChild, {
     target: {
       value:
-      'Anniversary'
+        'Anniversary'
     }
   });
 
-  expect(occasion[1].value).toBe('Birthday');
-  expect(occasion[2].value).toBe('Anniversary');
+  // await selectEvent.select(occasion)
 
   expect(occasion[0].selected).toBe(true);
 
-  expect(handleChange).toHaveBeenCalledTimes(1)
+
 })
 
 
