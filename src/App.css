@@ -334,13 +334,18 @@ footer nav ul {
     padding: 0 2em;
   }
   .chicago .inner-wrapper{
-    grid-template-columns: 1fr;
+    position: relative;
+    right: 25%;
   }
   .chicago .inner-wrapper div:last-child{
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
     align-items: center;
+  }
+  .chicago .inner-wrapper div:nth-child(2){
+    position: relative;
+   top:10em;
   }
   .chicago img, .chicago img:last-child{
     position: relative;
